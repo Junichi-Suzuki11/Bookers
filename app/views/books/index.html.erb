@@ -1,0 +1,39 @@
+<header>
+	<h1 class="headline1">Books</h1>
+</header>
+
+<main class="clearfix">
+	<section class="area1">
+		<h3 class="subtitle">Title</h3>
+		<% @books.each do |book| %>
+		<p class="main-content"><%= book.title %></p>
+		<% end %>
+	</section>
+
+	<section class="area2">
+		<h3 class="subtitle">Body</h3>
+		<% @books.each do |book| %>
+		<p class="main-text"><%= book.body %></p>
+		<% end %>
+	</section>
+
+</main>
+
+
+<!-- 新規投稿フォーム部分 -->
+<section class="area3">
+
+	<h1 class="headline2">New book</h1>
+
+	<%= form_for(@book) do |f| %>
+
+	<h3 class="new-title">Title</h3>
+	<%= f.text_field :title %>
+
+	<h3 class="new-title">Body</h3>
+	<%= f.text_area :body %>
+	<%= f.submit 'Create Book' %>
+
+	<% end %>
+
+</section>
