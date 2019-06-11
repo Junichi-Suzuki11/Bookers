@@ -1,2 +1,20 @@
-<h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+<main class="clearfix">
+	<def class="edit-area1">
+		<h3 class="edit-headline">Editing Book</h3>
+
+		<%= form_for(@book) do |f| %>
+
+		<p class="edit-text"><b>Title</b></p>
+		<%= f.text_field :title %>
+		<p class="edit-text"><b>Body</b></p>
+		<%= f.text_area :body %>
+		<br>
+		<%= f.submit 'Update Book' %>
+
+		<% end %>
+	</def>
+	<def class="edit-area2">
+		<li class="show-link"><%= link_to "Show", book_path(@book.id) %></li>
+		<li class="show-link"><%= link_to "Back", books_path %></li>
+	</def>
+</main>

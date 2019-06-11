@@ -1,27 +1,30 @@
-<header>
-	<h1 class="headline1">Books</h1>
-</header>
+<% if flash[:notice] %>
+		<p class="notice"><%= flash[:notice] %></p>
+<% end %>
 
-<main class="clearfix">
-	<section class="area1">
-		<h3 class="subtitle">Title</h3>
-		<% @books.each do |book| %>
-		<p class="main-content"><%= book.title %></p>
-		<% end %>
-	</section>
+<h1 class="headline1">Books</h1>
 
-	<section class="area2">
-		<h3 class="subtitle">Body</h3>
-		<% @books.each do |book| %>
-		<p class="main-text"><%= book.body %></p>
-		<% end %>
-	</section>
+<table class="table-area" cellspacing="10">
+	<tr>
+		<th class="subtitle">Title</th>
+		<th class="subtitle">Body</th>
+	</tr>
+	<% @books.each do |book| %>
+	<tr>
+		<td class="table-text"><%= book.title %></td>
+		<td class="table-text"><%= book.body %></td>
+		<td>
+			<p class="link-item"><%= link_to "Show", book_path(book.id) %></p>
+			<p class="link-item"><%= link_to "Edit", edit_book_path(book.id) %></p>
+			<p class="link-item"><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %></p>
 
-</main>
-
+		</td>
+	</tr>
+	<% end %>
+</table>
 
 <!-- 新規投稿フォーム部分 -->
-<section class="area3">
+<section class="area4">
 
 	<h1 class="headline2">New book</h1>
 
@@ -32,6 +35,7 @@
 
 	<h3 class="new-title">Body</h3>
 	<%= f.text_area :body %>
+	<br>
 	<%= f.submit 'Create Book' %>
 
 	<% end %>
